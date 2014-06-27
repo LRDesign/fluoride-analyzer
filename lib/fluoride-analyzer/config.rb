@@ -1,9 +1,8 @@
 module Fluoride::Analyzer
   class Config
     require 'yaml'
-    include Singleton
 
-    CONFIG_FILE = '.fluoride.yml'
+    DEFAULT_CONFIG_PATH = '.fluoride.yml'
     DEFAULT_EXCLUDE_PATHS      = [ %r[^/images], %r[^/stylesheets], %r[^/javascripts], %r[^/system],  ]
     DEFAULT_EXCLUDE_MIME_TYPES =   [ %r[image], %r[text/css], %r[javascript], %r[shockwave] ]
 
@@ -14,8 +13,12 @@ module Fluoride::Analyzer
                   :limit_count
 
 
-    def self.initialize()
-      yaml_config = YAML::load(File.open(CONFIG_FILE))
+    def self.load(config_path = DEFAULT_CONFIG_PATH)
+      yaml_config = YAML::load(File.open(config_path))
+      config = self.new(yaml_config)
+    end
+
+    def initialize(yaml_config)
       self.exclude_path_patterns = DEFAULT_EXCLUDE_PATHS
                                    + yaml_config['exclude_path_patterns']
                                    - yaml_config['include_path_patterns']

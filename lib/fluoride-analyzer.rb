@@ -6,4 +6,8 @@ module Fluoride
 end
 
 require 'fluoride-analyzer/config'
+require 'fluoride-analyzer/request'
+require 'fluoride-analyzer/exchange-result'
+require 'fluoride-analyzer/exception-result'
+require 'fluoride-analyzer/result-collection'
 require 'fluoride-analyzer/rails' if defined?(Rails)

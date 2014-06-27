@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fluoride-collector (0.0.8)
+    fluoride-analyzer (0.0.8)
 
 GEM
   remote: https://rubygems.org/
@@ -143,7 +143,7 @@ PLATFORMS
 DEPENDENCIES
   cadre
   corundum
-  fluoride-collector!
+  fluoride-analyzer!
   fuubar (~> 2.0.0.rc1)
   rack
   rails (~> 4.0.0)
