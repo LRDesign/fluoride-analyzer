@@ -1,0 +1,10 @@
+.bundle/
+.envrc
+*.sw?
+errors.err
+last_run
+loop/
+log/
+corundum/
+pkg/
+scripts/test-s3-store.yml
