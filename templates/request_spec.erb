@@ -1,0 +1,24 @@
+require 'spec_helper'
+
+describe '<%= pattern %>' do
+<% param_fields.each do |field| %>
+  let :<%= field %> do
+    FactoryGirl.create(:<%= field %>).id
+  end
+<%end%>
+<% each_status_group do |group| %>
+
+  # HTTP status code: <%= group.status_code %> <%= group.status_description %>
+  # <%= group.request_count %> cases recorded by Fluoride
+  # See example: '<%= group.example_source %>'
+  #   example path: <%= group.example_path %>
+  describe '<%= group.request_spec_description %>' do
+    it "should <%= group.should_what %>" do
+      <%= group.test_request(6) %>
+<% group.test_result.each do |test_result_line| %>
+      <%= test_result_line %>
+<% end %>
+    end
+  end
+<%end%>
+end
