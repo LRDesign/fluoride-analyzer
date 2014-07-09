@@ -14,15 +14,20 @@ end
 file 'results.yml' => FileList[ "#{FLUORIDE_PATH}/*.yml" ] do |task|
   Rake::Task[:environment].invoke
   parser = Fluoride::Analyzer::Parser.new
-  parser.files = task.prerequisites.find_all do |prereq|
-    File.file?(prereq) && __FILE__ != prereq
+
+  task.prerequisites.find_all do |prereq|
+    next unless File.file?(prereq) && __FILE__ != prereq
+    parser.parse_stream(File.read(prereq))
   end
+
   #parser.limit = LIMIT #XXX Uncomment to limit number of files parsed
   parser.target_path = task.name
 
-  parser.go
+  File.open(task.name, "w") do |target_file|
+    target_file.write(YAML.dump(parser.formatted_results))
+  end
 
-  puts "Found #{parser.results.keys.length} unique requests"
+  puts "Found #{parser.formatted_results.keys.length} unique requests"
 end
 
 require 'fluoride-analyzer/request-templater'

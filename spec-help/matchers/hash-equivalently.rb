@@ -35,5 +35,3 @@ module HashEquivalenceMatchers
   end
 
 end
-
-

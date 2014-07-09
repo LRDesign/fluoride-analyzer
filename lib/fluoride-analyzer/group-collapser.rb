@@ -1,3 +1,5 @@
+require 'fluoride-analyzer/group-context'
+
 module Fluoride::Analyzer
   class GroupCollapser
     def initialize(pattern, letname_map, method, status, requests_list)

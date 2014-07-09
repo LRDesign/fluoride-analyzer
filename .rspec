@@ -2,9 +2,9 @@
 --out last_run
 --color
 --format documentation
--I spec_help/interpose
+-I spec-help/interpose
 -I lib
--I spec_help
+-I spec-help
 --require simplecov
---require spec_helper
---pattern "spec/**/*-spec.rb"
+--require spec-helper
+--pattern "spec/**/*.rb"

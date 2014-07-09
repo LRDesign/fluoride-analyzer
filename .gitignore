@@ -8,3 +8,4 @@ log/
 corundum/
 pkg/
 scripts/test-s3-store.yml
+tmp/
