@@ -101,10 +101,11 @@ describe Fluoride::Analyzer::Parser do
   end
 
   it "should have 0 unrecognized requests" do
-    expect(parser.counts[:excluded]).to eq(1)
+    expect(parser.counts[:unrecognized]).to eq(0)
   end
 
   it "should be a well formatted version of the results" do
+    p parser.counts
     expect(results).to match("/" => {"GET" => {200 => match([ a_hash_including("path" => "/") ])}})
   end
 end

@@ -1,10 +1,7 @@
 require "action_controller/railtie"
-require "rails/test_unit/railtie"
 require 'fluoride-analyzer/rails'
 
 describe Fluoride::Analyzer::Railtie do
-
-  ENV["RAILS_ENV"] ||= 'test'
 
   def config(app)
 

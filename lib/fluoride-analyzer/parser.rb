@@ -194,6 +194,9 @@ module Fluoride::Analyzer
 
             pattern = RoutePattern.new(route, matches, params, path_spec, segment_keys)
           end
+          if pattern.nil?
+            pattern = RoutePattern.new(nil,nil,nil,nil,nil)
+          end
           pattern
         end
       end
