@@ -1,3 +1,5 @@
+require 'fluoride-analyzer/request-templater'
+
 FLUORIDE_PATH = 'fluoride-collector'
 LIMIT = 2000
 
@@ -30,11 +32,15 @@ file 'results.yml' => FileList[ "#{FLUORIDE_PATH}/*.yml" ] do |task|
   puts "Found #{parser.formatted_results.keys.length} unique requests"
 end
 
-require 'fluoride-analyzer/request-templater'
 task :template_request_specs => ['spec/requests', 'results.yml'] do
   templater = Fluoride::Analyzer::RequestTemplater.new
 
-  templater.template_path = File::join("../../../templates/request_spec.erb", __FILE__)
+  templater.template_string = File::read(File::expand_path("../../../templates/request_spec.erb", __FILE__))
   templater.results = YAML.load(File.read('results.yml'))
-  templater.go
+  templater.go do |filename, contents|
+    path = File.join("spec/requests", filename)
+    File.open(path, "w") do |spec_file|
+      spec_file.write(contents)
+    end
+  end
 end
