@@ -105,7 +105,6 @@ describe Fluoride::Analyzer::Parser do
   end
 
   it "should be a well formatted version of the results" do
-    p parser.counts
     expect(results).to match("/" => {"GET" => {200 => match([ a_hash_including("path" => "/") ])}})
   end
 end
