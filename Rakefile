@@ -8,7 +8,7 @@ module Corundum
 
   core.in_namespace do
     GemspecFiles.new(core) do |gsf|
-      gsf.extra_files.include("certs/ca-certificates.crt")
+      gsf.extra_files.include("default_config/**")
     end
 
     #Also available: 'unfinished': TODO and XXX
@@ -20,7 +20,7 @@ module Corundum
     rspec = RSpec.new(core)
 
     cov = SimpleCov.new(core, rspec) do |cov|
-      cov.threshold = 95
+      cov.threshold = 82
     end
 
     gem = GemBuilding.new(core)

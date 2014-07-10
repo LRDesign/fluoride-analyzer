@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name		= "fluoride-analyzer"
-  spec.version		= "0.0.8"
+  spec.version		= "0.0.1"
   author_list = {
     "Judson Lester" => 'nyarly@gmail.com',
     "Evan Down" => 'evan@lrdesign.com'
@@ -18,9 +18,28 @@ Gem::Specification.new do |spec|
   # Do this: y$@"
   # !!find lib bin doc spec spec_help -not -regex '.*\.sw.' -type f 2>/dev/null
   spec.files		= %w[
+    lib/fluoride-analyzer/parser.rb
+    lib/fluoride-analyzer/exception-result.rb
+    lib/fluoride-analyzer/rails/railtie.rb
+    lib/fluoride-analyzer/group-context.rb
+    lib/fluoride-analyzer/config.rb
+    lib/fluoride-analyzer/request-templater.rb
+    lib/fluoride-analyzer/group-collapser.rb
+    lib/fluoride-analyzer/rails.rb
+    lib/fluoride-analyzer/pattern-collapser.rb
+    lib/fluoride-analyzer/request.rb
+    lib/fluoride-analyzer/tasks.rake
+    lib/fluoride-analyzer/result-collection.rb
+    lib/fluoride-analyzer/request-processor.rb
+    lib/fluoride-analyzer/pattern-context.rb
+    lib/fluoride-analyzer/exchange-result.rb
+    lib/fluoride-analyzer.rb
+    spec/result-templater.rb
+    spec/railtie_spec.rb
+    spec/result-parser.rb
   ]
 
-  spec.test_file        = "spec_help/gem_test_suite.rb"
+  spec.test_file        = "spec-help/gem-test-suite.rb"
   spec.licenses = ["MIT"]
   spec.require_paths = %w[lib/]
   spec.rubygems_version = "1.3.5"

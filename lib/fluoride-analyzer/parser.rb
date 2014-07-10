@@ -47,7 +47,7 @@ module Fluoride::Analyzer
       end
       return false
     rescue
-      p record
+      warn "Exception raised while filtering record: #{record.inspect}"
       raise
     end
 
@@ -231,9 +231,7 @@ module Fluoride::Analyzer
 
       if pattern.path_spec == :unrecognized
         @counts[:no_matching_route] += 1
-        puts "\n#{__FILE__}:#{__LINE__} => #{record['request']['path'].inspect}"
-        puts "\n#{__FILE__}:#{__LINE__} => #{route.inspect}"
-        puts "\n#{__FILE__}:#{__LINE__} => #{[matches,params].pretty_inspect}" rescue nil
+        warn "Unrecognized route: #{record['request']['path'].inspect}"
       else
         route_path = pattern.path_spec
         path_params = Hash[pattern.segment_keys.map do |key|
@@ -256,7 +254,6 @@ module Fluoride::Analyzer
     rescue ArgumentError => ex
       @exceptions << [ex, file]
     rescue Exception => ex
-      p [file, ex, ex.backtrace[0..2]]
       @exceptions << [ex, file]
       raise
     end
