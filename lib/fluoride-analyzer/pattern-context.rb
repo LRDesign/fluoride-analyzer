@@ -27,6 +27,8 @@ module Fluoride::Analyzer
       @collapser.pattern.gsub(%r{[:/().]+},'_').gsub(/^_|_$/, '') + "_spec.rb"
     end
 
-    public :binding
+    def context_binding
+      binding
+    end
   end
 end

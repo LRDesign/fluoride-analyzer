@@ -1,3 +1,5 @@
+require 'fluoride-analyzer'
+
 module Fluoride::Analyzer
   class GroupContext
     def initialize(method, status, requests, path, query_params)

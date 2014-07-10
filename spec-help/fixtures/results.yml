@@ -1,0 +1,63 @@
+---
+/admin/demo_questions/:demo_question_id/demo_answers/:id/edit(.:format):
+  GET:
+    200:
+    - content-type:
+      sources:
+        fluoride-collector/exchange-2-70055791444280-14400.yml: 0
+      path_params:
+        :demo_question_id: "7"
+        :format:
+        :id: "45"
+      redirect_location:
+      path: /admin/demo_questions/7/demo_answers/45/edit
+      host: www.mindswarms.com
+      query_params:
+    - content-type:
+      sources:
+        fluoride-collector/exchange-2-70233049925940-14281.yml: 0
+      path_params:
+        :demo_question_id: "7"
+        :format:
+        :id: "36"
+      redirect_location:
+      path: /admin/demo_questions/7/demo_answers/36/edit
+      host: www.mindswarms.com
+      query_params:
+/case-studies(.:format):
+  GET:
+    200:
+    - content-type:
+      sources:
+        fluoride-collector/exchange-2-69825934893380-227.yml: 0
+      path_params:
+        :format:
+      redirect_location:
+      path: /case-studies
+      host: www.mindswarms.com
+      query_params:
+/admin/researchers/:id/su(.:format):
+  GET:
+    302:
+    - content-type:
+      sources:
+        fluoride-collector/exchange-2-69844951365940-7555.yml: 0
+      path_params:
+        :format:
+        :id: "13526"
+      redirect_location: https://www.mindswarms.com/dashboard
+      path: /admin/researchers/13526/su
+      host: www.mindswarms.com
+      query_params:
+/admin/transactions(.:format):
+  GET:
+    200:
+    - content-type:
+      sources:
+        fluoride-collector/exchange-2-69825934893380-965.yml: 0
+      path_params:
+        :format:
+      redirect_location:
+      path: /admin/transactions
+      host: www.mindswarms.com
+      query_params:

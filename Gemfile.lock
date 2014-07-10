@@ -2,6 +2,8 @@ PATH
   remote: .
   specs:
     fluoride-analyzer (0.0.8)
+      mattock (> 0)
+      valise (> 0)
 
 GEM
   remote: https://rubygems.org/

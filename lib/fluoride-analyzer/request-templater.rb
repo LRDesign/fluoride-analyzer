@@ -16,14 +16,10 @@ module Fluoride::Analyzer
       results.each_pair do |pattern, statuses|
         context = PatternContext.new(pattern, statuses)
 
-        path = File.join(target_dir, context.filename)
-        contents = template.result(context_binding)
+        path = File.join(context.filename)
+        contents = template.result(context.context_binding)
 
         yield(path, contents)
-
-        File.open(File.join("spec/requests", context.filename), "w") do |spec_file|
-          spec_file.write(template.result(context.binding))
-        end
       end
     end
   end
