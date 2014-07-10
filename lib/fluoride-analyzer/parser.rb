@@ -5,7 +5,7 @@ require 'yaml'
 
 module Fluoride::Analyzer
   class Parser
-    attr_accessor :files, :limit, :target_path
+    attr_accessor :files, :limit
     attr_reader :exceptions, :results, :counts
 
     def initialize
