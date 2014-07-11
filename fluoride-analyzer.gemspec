@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name		= "fluoride-analyzer"
-  spec.version		= "0.0.1"
+  spec.version		= "0.0.2"
   author_list = {
     "Judson Lester" => 'nyarly@gmail.com',
     "Evan Down" => 'evan@lrdesign.com'
@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   # !!find lib bin doc spec spec_help -not -regex '.*\.sw.' -type f 2>/dev/null
   spec.files		= %w[
     lib/fluoride-analyzer/parser.rb
+    lib/fluoride-analyzer/patterner.rb
     lib/fluoride-analyzer/exception-result.rb
     lib/fluoride-analyzer/rails/railtie.rb
     lib/fluoride-analyzer/group-context.rb
@@ -28,7 +29,7 @@ Gem::Specification.new do |spec|
     lib/fluoride-analyzer/rails.rb
     lib/fluoride-analyzer/pattern-collapser.rb
     lib/fluoride-analyzer/request.rb
-    lib/fluoride-analyzer/tasks.rake
+    lib/fluoride-analyzer/tasklib.rb
     lib/fluoride-analyzer/result-collection.rb
     lib/fluoride-analyzer/request-processor.rb
     lib/fluoride-analyzer/pattern-context.rb
