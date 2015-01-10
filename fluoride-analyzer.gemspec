@@ -1,9 +1,10 @@
 Gem::Specification.new do |spec|
   spec.name		= "fluoride-analyzer"
-  spec.version		= "0.0.2"
+  spec.version		= "0.0.3"
   author_list = {
-    "Judson Lester" => 'nyarly@gmail.com',
-    "Evan Down" => 'evan@lrdesign.com'
+    "Judson Lester" => 'judson@lrdesign.com',
+    "Evan Down" => 'evan@lrdesign.com',
+    "Patricia Ho" => "patricia@lrdesign.com"
   }
   spec.authors		= author_list.keys
   spec.email		= spec.authors.map {|name| author_list[name]}
