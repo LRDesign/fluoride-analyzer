@@ -6,3 +6,38 @@ The idea here is:
 0. Generate a list of routes actually hit in production
 0. Generate a scaffold set of request specs for producing quick test coverage
 
+
+To set this up in a Rails app:
+
+add
+
+```
+gem 'fluoride-collector'
+```
+to your Gemfile
+
+`bundle install`
+
+Create a file at lib/tasks/fluoride.rb with:
+```
+require 'fluoride-analyzer/tasklib'
+
+Fluoride::Analyzer::Tasklib.new
+```
+
+Check that it worked:
+`bundle exec rake -T` should include 'fluoride:analyzer:template_request_specs'
+
+Make a directory called 'fluoride/request_recordings' and put the fluoride 
+captures there.
+
+Run `bundle exec rake fluoride:analyzer:template_request_specs'
+
+The result should be a directory 'fluoride/spec/requests' filled with 
+automatically generated request specs.
+
+Now starts the process of moving those specs to your normal spec directory and 
+making them pass. Generally, the specs will fail because they ran against a 
+live app, and the test environment doesn't have e.g. database records that the 
+live app does - you'll need to mock or factory records so that the request 
+specs will pass.

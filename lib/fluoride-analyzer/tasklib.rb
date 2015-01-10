@@ -23,6 +23,7 @@ module Fluoride::Analyzer
       in_namespace do
         directory request_specs.abspath
 
+        desc "Delete and rebuild request specs based on Fluoride collections"
         task :rebuild_request_specs => [:clobber_request_specs, :template_request_specs]
 
         task :clobber_request_specs do
@@ -46,6 +47,7 @@ module Fluoride::Analyzer
           puts "Found #{parser.formatted_results.keys.length} unique requests"
         end
 
+        desc "Produce request specs that reproduce Fluoride collections"
         task :template_request_specs => [request_specs.abspath, results.abspath] do
           templater = Fluoride::Analyzer::RequestTemplater.new
 
