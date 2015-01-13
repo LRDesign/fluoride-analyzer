@@ -12,8 +12,9 @@ module Fluoride
       rake_tasks do
         require 'fluoride-analyzer/tasklib'
 
+        paths = config.fluoride_path
         configs = Valise::define do
-          config.fluoride_path.each do |path|
+          paths.each do |path|
             ro path
           end
           ro(from_here("../../../default_configs"))
