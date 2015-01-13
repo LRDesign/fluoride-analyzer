@@ -40,4 +40,3 @@ module Fluoride::Analyzer
     end
   end
 end
-
