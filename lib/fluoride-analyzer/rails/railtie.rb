@@ -5,6 +5,7 @@ module Fluoride
     class Railtie < ::Rails::Railtie
       config.fluoride_path = %w{
         .
+        config
         ~/.config/fluoride
         ~/.fluoride
       }

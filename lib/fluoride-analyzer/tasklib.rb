@@ -1,4 +1,5 @@
 require 'fluoride-analyzer/request-templater'
+require 'fluoride-analyzer/parser'
 require 'mattock'
 
 module Fluoride::Analyzer
