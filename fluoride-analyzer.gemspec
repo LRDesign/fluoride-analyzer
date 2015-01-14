@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name		= "fluoride-analyzer"
-  spec.version		= "0.0.5"
+  spec.version		= "0.0.6"
   author_list = {
     "Judson Lester" => 'judson@lrdesign.com',
     "Evan Down" => 'evan@lrdesign.com',
@@ -36,6 +36,7 @@ Gem::Specification.new do |spec|
     lib/fluoride-analyzer/pattern-context.rb
     lib/fluoride-analyzer/exchange-result.rb
     lib/fluoride-analyzer.rb
+    default_config/templates/request_spec.erb
     spec/result-templater.rb
     spec/railtie_spec.rb
     spec/result-parser.rb
