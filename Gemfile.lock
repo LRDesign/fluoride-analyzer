@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fluoride-analyzer (0.0.6)
+    fluoride-analyzer (0.0.7)
       mattock (> 0)
       valise (> 0)
 
