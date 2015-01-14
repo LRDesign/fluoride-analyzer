@@ -32,6 +32,8 @@ module Fluoride::Analyzer
         end
 
         file results.abspath => [:environment] + recordings_list do |task|
+          puts "Searching for recordings in #{request_recordings.abspath}, where there are #{recordings_list.length} .yml files"
+
           parser = Fluoride::Analyzer::Parser.new
 
           recordings_list.find_all do |prereq|
