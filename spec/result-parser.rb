@@ -107,4 +107,56 @@ describe Fluoride::Analyzer::Parser do
   it "should be a well formatted version of the results" do
     expect(results).to match("/" => {"GET" => {200 => match([ a_hash_including("path" => "/") ])}})
   end
+
+  xdescribe "for Rails3" do
+    let :route_set do
+      double("Rails Route set")
+    end
+
+    let :route do
+      double("Rails route")
+    end
+
+    let :matches do
+      double("match list")
+    end
+
+    let :params do
+      double("route params")
+    end
+
+    let :routes do
+      double("Rails routes").tap do |routes|
+        allow(routes).to receive(:set).and_return(route_set)
+        allow(routes).to receive(:recognize).and_return([[route, matches, params]]).any_number_of_times
+      end
+    end
+
+    let :patterner do
+      Fluoride::Analyzer::Patterner::Rails3.new(routes)
+    end
+
+    let :parser do
+      Fluoride::Analyzer::Parser.new.tap do |parser|
+        parser.patterner = patterner
+        parser.parse_stream("test-file.yaml", requests_stream)
+      end
+    end
+
+    it "should have a Rails3 patterner" do
+      expect(parser.patterner.class.name).to match(/Rails3/)
+    end
+
+    it "should have excluded 1 request" do
+      expect(parser.counts[:excluded]).to eq(1)
+    end
+
+    it "should have 0 unrecognized requests" do
+      expect(parser.counts[:unrecognized]).to eq(0)
+    end
+
+    it "should be a well formatted version of the results" do
+      expect(results).to match("/" => {"GET" => {200 => match([ a_hash_including("path" => "/") ])}})
+    end
+  end
 end

@@ -98,6 +98,18 @@ module Fluoride::Analyzer
     def patterner
       @patterner ||= Patterner.for(Rails.application.routes)
     end
+    attr_writer :patterner
+
+    def warnings
+      @warnings ||= Hash.new do |h,k|
+        warn k
+        h[k] = true
+      end
+    end
+
+    def warning(message)
+      warnings[message]
+    end
 
     def collect_record(file, record, index)
       if exclude?(record)
@@ -124,11 +136,12 @@ module Fluoride::Analyzer
 
       if pattern.path_spec == :unrecognized
         @counts[:no_matching_route] += 1
-        warn "Unrecognized route: #{record['request']['path'].inspect}"
+        warning "Unrecognized route: #{record['request']['method']} #{record['request']['path'].inspect}"
+        return
       else
         route_path = pattern.path_spec
         path_params = Hash[pattern.segment_keys.map do |key|
-          [key, params[key]]
+          [key, pattern.params[key]]
         end]
       end
 

@@ -10,3 +10,5 @@ pkg/
 scripts/test-s3-store.yml
 tmp/
 .vim-role
+errors.err
+.cadre

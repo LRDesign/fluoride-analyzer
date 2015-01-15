@@ -44,7 +44,8 @@ module Fluoride::Analyzer
       end
 
       reduced_hash.each do |(path, query_params), requests|
-      yield GroupContext.new(method, status, requests, path, query_params)
+        next if status == 304
+        yield GroupContext.new(method, status, requests, path, query_params)
       end
     end
   end

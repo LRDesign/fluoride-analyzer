@@ -48,12 +48,18 @@ module Fluoride::Analyzer
     end
 
     def redirect_path
-      request['redirect_location'].sub(%r[^https?://#{request['host']}], '')
+      if request['redirect_location'].nil?
+        pp request
+        pp response
+        exit
+      else
+        request['redirect_location'].sub(%r[^https?://#{request['host']}], '')
+      end
     end
 
     def test_result
       case @status_code.to_i
-      when 300..399
+      when 300..303,305..399
         ["response.should redirect_to(\"#{redirect_path}\")"]
       else
         ["response.should be_success", "response.status.should == 200"]

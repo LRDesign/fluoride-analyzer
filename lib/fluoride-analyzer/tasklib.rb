@@ -38,7 +38,7 @@ module Fluoride::Analyzer
 
           recordings_list.find_all do |prereq|
             next unless File.file?(prereq) && __FILE__ != prereq
-            parser.parse_stream(File.read(prereq))
+            parser.parse_stream(prereq, File.read(prereq))
           end
 
           parser.limit = limit

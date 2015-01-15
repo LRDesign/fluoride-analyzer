@@ -13,13 +13,18 @@ module Fluoride::Analyzer
     end
 
     def go
+      require 'pp'
       results.each_pair do |pattern, statuses|
-        context = PatternContext.new(pattern, statuses)
+        if pattern.nil?
+          pp statuses
+        else
+          context = PatternContext.new(pattern, statuses)
 
-        path = File.join(context.filename)
-        contents = template.result(context.context_binding)
+          path = File.join(context.filename)
+          contents = template.result(context.context_binding)
 
-        yield(path, contents)
+          yield(path, contents)
+        end
       end
     end
   end

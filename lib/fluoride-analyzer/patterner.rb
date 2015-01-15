@@ -31,7 +31,7 @@ module Fluoride::Analyzer
     end
     attr_reader :rails_routes
 
-    def build_request(result_env)
+    def build_request(request_env)
       ActionDispatch::Request.new(base_env.merge(request_env))
     end
 
@@ -85,6 +85,7 @@ module Fluoride::Analyzer
 
       def build(env)
         req = build_request(env)
+
         pattern = nil
         route_set.recognize(req) do |route, matches, params|
           rails_route = route_map[route]
@@ -97,7 +98,14 @@ module Fluoride::Analyzer
             path_spec = rails_route.path.spec.to_s
             segment_keys = rails_route.segment_keys
           end
-
+#          require 'pp'
+#          puts "\n#{__FILE__}:#{__LINE__} => #{{
+#            :req => req, :route => route, :matches => matches, :params => params,
+#              :rails_route => rails_route,
+#              :path_spec => path_spec,
+#              :segment_keys => segment_keys
+#          }.pretty_inspect}"
+#
           pattern = RoutePattern.new(route, matches, params, path_spec, segment_keys)
         end
         if pattern.nil?

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fluoride-analyzer (0.0.7)
+    fluoride-analyzer (0.0.8)
       mattock (> 0)
       valise (> 0)
 
@@ -34,10 +34,10 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.2)
     builder (3.1.4)
-    cadre (0.3.1)
-      thor (>= 0.18.1, < 1.0)
-      tilt (~> 1.0)
-      valise (~> 1.0)
+    cadre (1.0.1)
+      thor (>= 0.14, < 1.0)
+      tilt (> 1.0)
+      valise (~> 1.1.2)
     caliph (0.3.1)
     corundum (0.4.1)
       bundler
